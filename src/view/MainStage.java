@@ -5,21 +5,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Model;
 
 public class MainStage extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 400, 400));
+
+        Parent root = FXMLLoader.load(getClass().getResource("../ressources/fxmlFiles/Start.fxml"));
+        Scene scene = new Scene(root);
+        scene.setRoot(root);
+
+        primaryStage.setTitle("Perudo");
+        primaryStage.centerOnScreen();
+        primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {
-        Model model = new Model();
         launch(args);
     }
+
 }
 

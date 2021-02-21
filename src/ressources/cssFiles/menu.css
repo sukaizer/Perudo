@@ -1,0 +1,30 @@
+.root {
+    -fx-alignment: CENTER;
+}
+
+.label {
+    -fx-font-size: 20;
+    -fx-font-family: "Avenir Next";
+}
+
+.text-field {
+    -fx-font-size: 15;
+    -fx-font-family: Avenir;
+    -fx-alignment: center-left;
+}
+
+.button {
+    -fx-font-size: 15;
+    -fx-alignment: CENTER;
+    -fx-font-family: Avenir;
+}
+
+.button:pressed {
+    -fx-font-family: "Avenir Next";
+    -fx-font-weight: bolder;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),10,0,0,0); /*effet d'ombre*/
+}

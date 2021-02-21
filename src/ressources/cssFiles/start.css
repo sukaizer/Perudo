@@ -1,0 +1,27 @@
+.root {
+    -fx-font-family: "Avenir Next";
+    -fx-background-color: #28b8ca;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+.label {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),3,0,0,0); /*effet d'ombre*/
+    -fx-font-size: 90;
+}
+
+.button {
+    -fx-font-family: "Avenir";
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),10,0,0,0); /*effet d'ombre*/
+    -fx-cursor: hand;
+}
+
+.button:pressed {
+    -fx-font-family: "Avenir Next";
+    -fx-font-weight: bolder;
+}
