@@ -18,13 +18,9 @@ import java.util.ResourceBundle;
 public class ControllerMenu implements Initializable {
 
     @FXML public Button button;
-
     @FXML public TextField textField1;
-
     @FXML public TextField textField2;
-
     @FXML public TextField textField3;
-
     @FXML public TextField textField4;
 
     @Override
