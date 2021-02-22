@@ -55,7 +55,7 @@
                <children>
                   <VBox id="mainInfo" alignment="CENTER" prefHeight="400.0" prefWidth="700.0">
                      <children>
-                        <Label id="optionsLabel" text="Que faites-vous ?">
+                        <Label id="optionsLabel" fx:id="labelChoice" text="Que faites-vous ?">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -78,20 +78,24 @@
                                     <Button fx:id="betButton" mnemonicParsing="false" onAction="#bet" text="MISER" />
                                  </children>
                               </VBox>
-                              <VBox fx:id="vboxValidateBet" alignment="CENTER" disable="true" prefHeight="200.0" prefWidth="100.0" visible="false">
+                              <VBox fx:id="vboxValidateBet" alignment="CENTER" disable="true" prefHeight="320.0" prefWidth="651.0" visible="false">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="161.0" prefWidth="651.0">
+                                    <Label id="betIsValidLabel" fx:id="betIsValidLabel" text="Label" />
+                                    <HBox alignment="CENTER" prefHeight="201.0" prefWidth="651.0">
                                        <children>
-                                          <Spinner />
-                                          <ChoiceBox prefWidth="150.0">
+                                          <Spinner id="spinnerQuantity" fx:id="spinnerQuantity" onMouseClicked="#spinnerOnAction" />
+                                          <ChoiceBox fx:id="choiceBoxValue" onMouseClicked="#choiceBoxOnAction" prefWidth="150.0">
                                              <HBox.margin>
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
                                        </children>
                                     </HBox>
-                                    <Button mnemonicParsing="false" text="Valider Mise" />
+                                    <Button fx:id="validateBetButton" mnemonicParsing="false" onAction="#validateBet" text="Valider Mise" />
                                  </children>
+                                 <StackPane.margin>
+                                    <Insets />
+                                 </StackPane.margin>
                               </VBox>
                            </children>
                         </StackPane>

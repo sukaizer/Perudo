@@ -73,3 +73,23 @@
     -fx-cursor: hand;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),10,0,0,0); /*effet d'ombre*/
 }
+
+#spinnerQuantity {
+    -fx-font-family: Avenir;
+    -fx-font-size: 15;
+    -fx-pref-width: 175;
+    -fx-background-radius: 30px;
+}
+
+#betIsValidLabel {
+    -fx-font-size: 20;
+    -fx-font-family: Avenir;
+    -fx-text-fill: #ff0000;
+}
+
+.choice-box {
+    -fx-font-family: Avenir;
+    -fx-font-size: 15;
+    -fx-pref-width: 175;
+    -fx-background-radius: 30px;
+}

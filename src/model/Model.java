@@ -23,16 +23,32 @@ public class Model {
         }
     }
 
+    public boolean isPalifico() {
+        return palifico;
+    }
+
+    public boolean isStart() {
+        return start;
+    }
+
+    public boolean isPaco() {
+        return paco;
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
     /**
      * get to the next turn, if the next player
      * already lost, skips his turn
      */
     public void nextTurn(){
-
         if(this.turn == 3){
             this.turn = 1;
         }else{
             this.turn++;
+            if (this.start && this.turn == 1) this.start = false;
         }
         if(!this.players.get(this.turn).getIsAlive()){
             nextTurn();
@@ -84,11 +100,11 @@ public class Model {
      * Checks if the given bet is valid
      * @param value the value of the dice
      * @param quantity quantity of dices
-     * @param quantityUp true if the player chose to increase the quantity
      * @param pacoValue value of the paco the player wants if DiceValue is a paco
      * @return true if the bet is valid
      */
-    public boolean betIsValid(Dice value, int quantity, boolean quantityUp, int pacoValue){
+    public boolean betIsValid(Dice value, int quantity, int pacoValue){
+        boolean quantityUp = quantity > this.betQuantity;
         if (this.start) {
             if (this.palifico) {
                 return (quantity <= this.totalNumberDices() && quantity > 0);
@@ -105,9 +121,9 @@ public class Model {
         }else{
             if (quantityUp) {
                 if (this.paco){
-                    return (quantity > this.betQuantity && quantity <= this.totalNumberDices() && value.equals(Dice.Paco));
+                    return (quantity <= this.totalNumberDices() && value.equals(Dice.Paco)) || pacoSwitchConditionReverse(value,quantity);
                 }else{
-                    return (quantity > this.betQuantity && quantity <= this.totalNumberDices() && value.equals(this.betValue));
+                    return quantity <= this.totalNumberDices() && value.equals(this.betValue);
                 }
             } else {
                 int total;
@@ -115,7 +131,7 @@ public class Model {
                 if (this.paco){
                     total = diceValueConverter(this.betValue, pacoValue);
                     toCompare = diceValueConverter(value, pacoValue);
-                    return (toCompare > total && this.betQuantity == quantity || pacoSwitchConditionReverse(value,quantity));
+                    return (toCompare > total && this.betQuantity == quantity);
 
                 }else{
                     total = diceValueConverter(this.betValue, 0);
@@ -132,7 +148,8 @@ public class Model {
     }
 
     public boolean pacoSwitchConditionReverse(Dice value, int quantity){
-        return (quantity > (2*this.betQuantity)+1 && !value.equals(Dice.Paco));
+        System.out.println("test");
+        return (quantity >= (2*this.betQuantity)+1 && !value.equals(Dice.Paco));
     }
 
     /**
