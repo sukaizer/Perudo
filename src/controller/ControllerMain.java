@@ -16,6 +16,8 @@ public class ControllerMain implements Initializable {
     @FXML public Label nplayer3;
     @FXML public Label nplayer4;
 
+    @FXML public Label playerLastBet;
+
     private String player1; //the players names, won't change
     private String player2;
     private String player3;
@@ -30,12 +32,12 @@ public class ControllerMain implements Initializable {
         this.nplayer2.setText(player2Name);
         this.nplayer3.setText(player3Name);
         this.nplayer4.setText(player4Name);
+        this.playerLastBet.setText(this.nplayer1.getText());
     }
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 }
