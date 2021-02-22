@@ -14,6 +14,8 @@
     -fx-font-family: "Avenir";
     -fx-font-size: 25;
     -fx-font-weight: bold;
+    -fx-pref-width: 130;
+    -fx-background-radius: 20px;
 }
 
 .button:hover {
