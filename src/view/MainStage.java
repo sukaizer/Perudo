@@ -18,6 +18,7 @@ public class MainStage extends Application {
         primaryStage.setTitle("Perudo");
         primaryStage.centerOnScreen();
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }
