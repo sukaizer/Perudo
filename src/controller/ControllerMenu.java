@@ -44,7 +44,7 @@ public class ControllerMenu implements Initializable {
         if (textField1.getText().equals("") || textField2.getText().equals("") || textField3.getText().equals("") || textField4.getText().equals("")) {
             button.setDisable(true);
         } else if (!textField1.getText().equals("") && !textField2.getText().equals("") && !textField3.getText().equals("") && !textField4.getText().equals("")) {
-            button.setDisable(textField1.getText().equals(textField2.getText()) || textField2.getText().equals(textField3.getText()) || textField3.getText().equals(textField4.getText()));
+            button.setDisable(textField1.getText().equals(textField2.getText()) || textField2.getText().equals(textField3.getText()) || textField3.getText().equals(textField4.getText()) || textField1.getText().equals(textField4.getText()) || textField1.getText().equals(textField3.getText()) || textField2.getText().equals(textField4.getText()));
         }
     }
 }
