@@ -84,7 +84,6 @@ public class ControllerMain implements Initializable {
 
         if (this.model.betIsValid(value,quantity,0)){
             this.model.setPaco(value.equals(Dice.Paco));
-            System.out.println(this.model.isPaco());
             this.betIsValidLabel.setVisible(false);
             this.model.setBet(value,quantity);
             if (this.model.isStart()) this.choiceBoxValue.getItems().add(Dice.Paco);

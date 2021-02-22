@@ -121,6 +121,7 @@ public class Model {
         }else{
             if (quantityUp) {
                 if (this.paco){
+                    System.out.println("test1");
                     return (quantity <= this.totalNumberDices() && value.equals(Dice.Paco)) || pacoSwitchConditionReverse(value,quantity);
                 }else{
                     return quantity <= this.totalNumberDices() && value.equals(this.betValue);
@@ -144,11 +145,11 @@ public class Model {
     }
 
     public boolean pacoSwitchCondition(Dice value, int quantity){
-        return (quantity > Math.round((float)(this.betQuantity/2)) && value.equals(Dice.Paco));
+        return (quantity >= Math.round((float)(this.betQuantity/2)) && value.equals(Dice.Paco));
     }
 
     public boolean pacoSwitchConditionReverse(Dice value, int quantity){
-        System.out.println("test");
+        System.out.println("test2");
         return (quantity >= (2*this.betQuantity)+1 && !value.equals(Dice.Paco));
     }
 
