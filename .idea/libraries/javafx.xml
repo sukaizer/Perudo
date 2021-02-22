@@ -1,18 +1,7 @@
 <component name="libraryTable">
   <library name="javafx">
     <CLASSES>
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files (x86)/JavaFX/javafx-sdk-15.0.1/lib" />
     </CLASSES>
     <JAVADOC />
     <NATIVE>
@@ -22,42 +11,12 @@
       <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
       <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
       <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files (x86)/JavaFX/javafx-sdk-15.0.1/lib" />
     </NATIVE>
     <SOURCES>
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
-      <root url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files (x86)/JavaFX/javafx-sdk-15.0.1/lib" />
     </SOURCES>
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
-    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files (x86)/JavaFX/javafx-sdk-15.0.1/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files (x86)/JavaFX/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
   </library>
 </component>

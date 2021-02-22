@@ -1,0 +1,74 @@
+.root {
+    -fx-background-color: #28b8ca;
+
+}
+
+#playerName {
+    -fx-font-family: Avenir;
+    -fx-font-size: 30;
+    -fx-padding: 15 0 15 5;
+}
+
+#firstSplitPane {
+    -fx-background-color: #28b8ca;
+}
+
+#lastBet {
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 30;
+    -fx-padding: 5 0 0 50;
+}
+
+#playerLastBet {
+    -fx-font-family: Avenir;
+    -fx-font-size: 20;
+    -fx-padding: 5 0 0 120;
+}
+#upperFirstBox {
+    -fx-border-color: #5b21c3;
+    -fx-border-width: 6 3 3 6;
+}
+
+#lowerFirstBox {
+    -fx-border-color: #5b21c3;
+    -fx-border-width: 3 3 6 6;
+}
+
+#upperBoxInfo {
+    -fx-border-color: #5b21c3;
+    -fx-border-width: 6 6 3 3;
+}
+
+
+#mainInfo{
+    -fx-alignment: center;
+    -fx-border-color: #5b21c3;
+    -fx-border-width: 3 6 6 3;
+}
+
+#optionsLabel {
+    -fx-font-size: 30;
+    -fx-font-family: "Avenir Next";
+}
+
+#numberRoundLabel {
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 25;
+}
+
+.button {
+    -fx-font-family: Avenir;
+    -fx-font-size: 20;
+    -fx-pref-width: 175;
+    -fx-background-radius: 30px;
+}
+
+.button:pressed {
+    -fx-font-family: "Avenir Next";
+    -fx-font-weight: bolder;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8),10,0,0,0); /*effet d'ombre*/
+}
