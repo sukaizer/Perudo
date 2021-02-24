@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../cssFiles/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMain">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../cssFiles/main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMain">
    <children>
       <VBox prefHeight="600.0" prefWidth="300.0">
          <children>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="300.0">
                <children>
-                  <VBox id="upperFirstBox" prefHeight="300.0" prefWidth="300.0">
+                  <VBox id="upperFirstBox" prefHeight="360.0" prefWidth="320.0">
                      <children>
                         <Label id="playerName" fx:id="nplayer1" text="Label" />
                         <Label id="playerName" fx:id="nplayer2" text="Label" />
@@ -29,7 +29,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="300.0">
                <children>
-                  <VBox id="lowerFirstBox" prefHeight="300.0" prefWidth="300.0">
+                  <VBox id="lowerFirstBox" layoutY="60.0" prefHeight="360.0" prefWidth="320.0">
                      <children>
                         <Label id="lastBet" text="Dernière Mise" />
                         <Label id="playerLastBet" fx:id="playerLastBet" contentDisplay="CENTER" text="Label" />
@@ -43,17 +43,17 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="700.0">
                <children>
-                  <VBox id="upperBoxInfo" alignment="CENTER" prefHeight="200.0" prefWidth="700.0">
+                  <VBox id="upperBoxInfo" alignment="CENTER" layoutX="20.0" prefHeight="232.0" prefWidth="960.0">
                      <children>
                         <Label id="numberRoundLabel" text="Label" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                        <HBox prefHeight="105.0" prefWidth="951.0" />
                      </children>
                   </VBox>
                </children>
             </Pane>
             <Pane prefHeight="400.0" prefWidth="700.0">
                <children>
-                  <VBox id="mainInfo" alignment="CENTER" prefHeight="400.0" prefWidth="700.0">
+                  <VBox id="mainInfo" alignment="CENTER" layoutX="20.0" layoutY="30.0" prefHeight="493.0" prefWidth="960.0">
                      <children>
                         <Label id="optionsLabel" fx:id="labelChoice" text="Que faites-vous ?">
                            <opaqueInsets>
@@ -70,7 +70,7 @@
                            <children>
                               <VBox fx:id="vboxLierBet" alignment="CENTER">
                                  <children>
-                                    <Button fx:id="lierButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="&quot;MENTEUR&quot;">
+                                    <Button fx:id="lierButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="DUDO">
                                        <VBox.margin>
                                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                        </VBox.margin>

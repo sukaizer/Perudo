@@ -112,8 +112,6 @@ public class Model {
         }else{
             if (quantityUp) {
                 if (this.betValue.equals(Dice.Paco)){
-                    System.out.println("test 1 : " + (quantity <= this.totalNumberDices() && value.equals(Dice.Paco)));
-                    System.out.println("test 2 : " + (pacoSwitchConditionReverse(value,quantity)));
                     return (quantity <= this.totalNumberDices() && value.equals(Dice.Paco)) || pacoSwitchConditionReverse(value,quantity);
                 }else{
                     return quantity <= this.totalNumberDices() && value.equals(this.betValue);
