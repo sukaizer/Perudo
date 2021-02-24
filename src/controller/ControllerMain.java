@@ -54,11 +54,11 @@ public class ControllerMain implements Initializable {
 
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new Model();
         this.lierButton.setDisable(true);
+        this.playerLastBet.setVisible(false);
         this.choiceBoxValue.getItems().add(Dice.Deux);
         this.choiceBoxValue.getItems().add(Dice.Trois);
         this.choiceBoxValue.getItems().add(Dice.Quatre);
@@ -83,11 +83,12 @@ public class ControllerMain implements Initializable {
         int quantity = this.spinnerQuantity.getValue();
 
         if (this.model.betIsValid(value,quantity,0)){
-            this.model.setPaco(value.equals(Dice.Paco));
             this.betIsValidLabel.setVisible(false);
             this.model.setBet(value,quantity);
+            this.playerLastBet.setText(quantity + " " + value.toString());
             if (this.model.isStart()) this.choiceBoxValue.getItems().add(Dice.Paco);
             this.model.nextTurn();
+            this.playerLastBet.setVisible(true);
         } else {
             this.betIsValidLabel.setVisible(true);
         }

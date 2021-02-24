@@ -80,7 +80,7 @@
                               </VBox>
                               <VBox fx:id="vboxValidateBet" alignment="CENTER" disable="true" prefHeight="320.0" prefWidth="651.0" visible="false">
                                  <children>
-                                    <Label id="betIsValidLabel" fx:id="betIsValidLabel" text="Label" />
+                                    <Label id="betIsValidLabel" fx:id="betIsValidLabel" text="Mise non valide" />
                                     <HBox alignment="CENTER" prefHeight="201.0" prefWidth="651.0">
                                        <children>
                                           <Spinner id="spinnerQuantity" fx:id="spinnerQuantity" onMouseClicked="#spinnerOnAction" />

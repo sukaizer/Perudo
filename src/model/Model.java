@@ -10,13 +10,11 @@ public class Model {
     private int betQuantity; //The number of betValue faces
     private boolean palifico; //If true then palifico round
     private boolean start; //If true then start of the round
-    private boolean paco;
 
     public Model(){
         this.turn = 0;
         this.start = true;
         this.palifico = false;
-        this.paco = false;
         this.players = new ArrayList<>(4);
         for (int i = 0; i < 4; i++) {
             players.add(new Player(this,i));
@@ -31,9 +29,6 @@ public class Model {
         return start;
     }
 
-    public boolean isPaco() {
-        return paco;
-    }
 
     public int getTurn() {
         return turn;
@@ -72,12 +67,8 @@ public class Model {
         }
         this.start = true;
         this.palifico = a == 1;
-        this.paco = false;
     }
 
-    public void setPaco(boolean paco){
-        this.paco = paco;
-    }
 
     public Dice getBetValue() {
         return betValue;
@@ -113,15 +104,16 @@ public class Model {
             }
 
         }else if (this.palifico){
-            if (this.paco){
+            if (this.betValue.equals(Dice.Paco)){
                 return (quantity > this.betQuantity && quantity <= this.totalNumberDices() && value.equals(Dice.Paco));
             }else{
                 return (quantity > this.betQuantity && quantity <= this.totalNumberDices() && !value.equals(Dice.Paco));
             }
         }else{
             if (quantityUp) {
-                if (this.paco){
-                    System.out.println("test1");
+                if (this.betValue.equals(Dice.Paco)){
+                    System.out.println("test 1 : " + (quantity <= this.totalNumberDices() && value.equals(Dice.Paco)));
+                    System.out.println("test 2 : " + (pacoSwitchConditionReverse(value,quantity)));
                     return (quantity <= this.totalNumberDices() && value.equals(Dice.Paco)) || pacoSwitchConditionReverse(value,quantity);
                 }else{
                     return quantity <= this.totalNumberDices() && value.equals(this.betValue);
@@ -129,11 +121,8 @@ public class Model {
             } else {
                 int total;
                 int toCompare;
-                if (this.paco){
-                    total = diceValueConverter(this.betValue, pacoValue);
-                    toCompare = diceValueConverter(value, pacoValue);
-                    return (toCompare > total && this.betQuantity == quantity);
-
+                if (this.betValue.equals(Dice.Paco)){
+                    return false;
                 }else{
                     total = diceValueConverter(this.betValue, 0);
                     toCompare = diceValueConverter(value, 0);
