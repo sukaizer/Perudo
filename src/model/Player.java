@@ -57,6 +57,7 @@ public class Player {
      * Remove a dice from the player
      */
     public void loseDice(){
+        System.out.println("joueur " + this.nbPlayer + " a " +this.dices.size());
         this.dices.remove(0);
         this.numberDices--;
         if(this.dices.size() == 0){

@@ -39,19 +39,35 @@ public class Model {
      * already lost, skips his turn
      */
     public void nextTurn(){
-        if(this.turn == 3){
+        if (this.turn == 3){
             this.turn = 1;
-        }else{
+        } else {
             this.turn++;
             if (this.start && this.turn == 1) this.start = false;
         }
-        if(!this.players.get(this.turn).getIsAlive()){
+        if (!this.players.get(this.turn).getIsAlive()){
             nextTurn();
+        }
+    }
+
+    public int previousTurn(){
+        if (this.turn == 0){
+            return 3;
+        } else {
+            return this.turn-1;
         }
     }
 
     public ArrayList<Player> getPlayers() {
         return players;
+    }
+
+    public Player getActualPlayer(){
+        return players.get(this.turn);
+    }
+
+    public Player getPreviousPlayer(){
+        return players.get(previousTurn());
     }
 
     /**
@@ -146,14 +162,15 @@ public class Model {
      * @param quantity quantity of dices
      * @return true if the bet is a lie
      */
-    public boolean lierValue(Dice value, int quantity){
+    public boolean lierValue(){
+        //TODO
         int n = 0;
         for (Player p : this.players) {
             for (Dice d : p.getDices()) {
-                if (d.equals(value)) n++;
+                if (d.equals(this.betValue)) n++;
             }
         }
-        return n > quantity;
+        return n > this.betQuantity;
     }
 
     public void setBet(Dice value, int quantity){

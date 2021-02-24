@@ -7,11 +7,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import model.Dice;
 import model.Model;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,9 +23,11 @@ public class ControllerMain implements Initializable {
     @FXML public Label nplayer3;
     @FXML public Label nplayer4;
 
+    @FXML public Label lastBet;
     @FXML public Label playerLastBet;
     @FXML public Label labelChoice;
     @FXML public Label betIsValidLabel;
+    @FXML public Label playerTurnLabel;
     @FXML public Button lierButton;
     @FXML public Button betButton;
     @FXML public Button validateBetButton;
@@ -45,19 +47,17 @@ public class ControllerMain implements Initializable {
         this.player2 = player2Name;
         this.player3 = player3Name;
         this.player4 = player4Name;
-        this.nplayer1.setText(player1Name);
-        this.nplayer2.setText(player2Name);
-        this.nplayer3.setText(player3Name);
-        this.nplayer4.setText(player4Name);
-        this.playerLastBet.setVisible(false);
+        setPlayerLabel();
+        this.lastBet.setVisible(false);
+        this.playerTurnLabel.setText( "Round du Joueur : " + playerTurnName());
     }
-
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new Model();
         this.lierButton.setDisable(true);
+        this.lastBet.setVisible(false);
         this.playerLastBet.setVisible(false);
         this.choiceBoxValue.getItems().add(Dice.Deux);
         this.choiceBoxValue.getItems().add(Dice.Trois);
@@ -70,11 +70,22 @@ public class ControllerMain implements Initializable {
         this.betIsValidLabel.setVisible(false);
     }
 
+    @FXML public void lierButtonAction(ActionEvent actionEvent) {
+        if (this.model.lierValue()){
+            this.model.getActualPlayer().loseDice();
+        } else {
+            this.model.getPreviousPlayer().loseDice();
+        }
+        this.model.newRound();
+        setPlayerLabel();
+        this.lierButton.setDisable(true);
+        this.playerLastBet.setVisible(false);
+        this.lastBet.setVisible(false);
+    }
+
     @FXML public void bet(ActionEvent actionEvent) {
-        this.vboxLierBet.setDisable(true);
-        this.vboxLierBet.setVisible(false);
-        this.vboxValidateBet.setDisable(false);
-        this.vboxValidateBet.setVisible(true);
+        disablePanel(this.vboxLierBet,true);
+        disablePanel(this.vboxValidateBet,false);
         this.labelChoice.setText("Quelle mise ?");
     }
 
@@ -85,10 +96,18 @@ public class ControllerMain implements Initializable {
         if (this.model.betIsValid(value,quantity,0)){
             this.betIsValidLabel.setVisible(false);
             this.model.setBet(value,quantity);
-            this.playerLastBet.setText(quantity + " " + value.toString());
-            if (this.model.isStart()) this.choiceBoxValue.getItems().add(Dice.Paco);
+            this.lastBet.setText(quantity + " " + value.toString());
+            this.playerLastBet.setText(playerTurnName());
+            if (this.model.isStart()) {
+                this.choiceBoxValue.getItems().add(Dice.Paco);
+                this.lierButton.setDisable(false);
+            }
             this.model.nextTurn();
+            this.lastBet.setVisible(true);
             this.playerLastBet.setVisible(true);
+            disablePanel(this.vboxLierBet,false);
+            disablePanel(this.vboxValidateBet,true);
+            this.playerTurnLabel.setText( "Round du Joueur : " + playerTurnName());
         } else {
             this.betIsValidLabel.setVisible(true);
         }
@@ -110,4 +129,28 @@ public class ControllerMain implements Initializable {
             this.validateBetButton.setDisable(true);
         }
     }
+
+    public void disablePanel(Pane p, boolean disable){
+        p.setDisable(disable);
+        p.setVisible(!disable);
+    }
+
+    public String playerTurnName(){
+        int a = this.model.getTurn();
+        return switch (a){
+            case 0 -> this.player1;
+            case 1 -> this.player2;
+            case 2 -> this.player3;
+            case 3 -> this.player4;
+            default -> throw new IllegalStateException("Unexpected value: " + a);
+        };
+    }
+
+    public void setPlayerLabel(){
+        this.nplayer1.setText(this.player1 + " : " + this.model.getPlayers().get(0).getNumberDices() + " dés restants");
+        this.nplayer2.setText(this.player2 + " : " + this.model.getPlayers().get(1).getNumberDices() + " dés restants");
+        this.nplayer3.setText(this.player3 + " : " + this.model.getPlayers().get(2).getNumberDices() + " dés restants");
+        this.nplayer4.setText(this.player4 + " : " + this.model.getPlayers().get(3).getNumberDices() + " dés restants");
+    }
+
 }

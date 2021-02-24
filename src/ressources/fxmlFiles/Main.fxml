@@ -32,7 +32,8 @@
                   <VBox id="lowerFirstBox" layoutY="60.0" prefHeight="360.0" prefWidth="320.0">
                      <children>
                         <Label id="lastBet" text="Dernière Mise" />
-                        <Label id="playerLastBet" fx:id="playerLastBet" contentDisplay="CENTER" text="Label" />
+                        <Label id="playerLastBet" fx:id="playerLastBet" text="Label" />
+                        <Label id="playerLastBet" fx:id="lastBet" contentDisplay="CENTER" text="Label" />
                         <HBox prefHeight="63.0" prefWidth="300.0" />
                      </children>
                   </VBox>
@@ -45,7 +46,7 @@
                <children>
                   <VBox id="upperBoxInfo" alignment="CENTER" layoutX="20.0" prefHeight="232.0" prefWidth="960.0">
                      <children>
-                        <Label id="numberRoundLabel" text="Label" />
+                        <Label id="numberRoundLabel" fx:id="playerTurnLabel" text="Label" />
                         <HBox prefHeight="105.0" prefWidth="951.0" />
                      </children>
                   </VBox>
@@ -70,7 +71,7 @@
                            <children>
                               <VBox fx:id="vboxLierBet" alignment="CENTER">
                                  <children>
-                                    <Button fx:id="lierButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="DUDO">
+                                    <Button fx:id="lierButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#lierButtonAction" text="DUDO">
                                        <VBox.margin>
                                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                        </VBox.margin>
