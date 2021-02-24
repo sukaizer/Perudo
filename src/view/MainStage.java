@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
 
 public class MainStage extends Application {
 
@@ -19,6 +22,8 @@ public class MainStage extends Application {
         primaryStage.centerOnScreen();
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
+        Image icon = new Image(new FileInputStream("src/ressources/files/icon.jpeg"));
+        primaryStage.getIcons().add(icon);
         primaryStage.show();
 
     }
