@@ -73,14 +73,20 @@ public class ControllerMain implements Initializable {
     @FXML public void lierButtonAction(ActionEvent actionEvent) {
         if (this.model.lierValue()){
             this.model.getActualPlayer().loseDice();
+            this.model.getActualPlayer().setJustLostADice(true);
         } else {
             this.model.getPreviousPlayer().loseDice();
+            this.model.getPreviousPlayer().setJustLostADice(true);
         }
+
         this.model.newRound();
         setPlayerLabel();
         this.lierButton.setDisable(true);
         this.playerLastBet.setVisible(false);
         this.lastBet.setVisible(false);
+        this.choiceBoxValue.getItems().remove(Dice.Paco);
+        this.choiceBoxValue.setValue(null);
+        this.spinnerQuantity.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,model.totalNumberDices()));
     }
 
     @FXML public void bet(ActionEvent actionEvent) {
@@ -147,10 +153,10 @@ public class ControllerMain implements Initializable {
     }
 
     public void setPlayerLabel(){
-        this.nplayer1.setText(this.player1 + " : " + this.model.getPlayers().get(0).getNumberDices() + " dés restants");
-        this.nplayer2.setText(this.player2 + " : " + this.model.getPlayers().get(1).getNumberDices() + " dés restants");
-        this.nplayer3.setText(this.player3 + " : " + this.model.getPlayers().get(2).getNumberDices() + " dés restants");
-        this.nplayer4.setText(this.player4 + " : " + this.model.getPlayers().get(3).getNumberDices() + " dés restants");
+        this.nplayer1.setText(this.player1 + " : " + this.model.getPlayers().get(0).getNumberDices());
+        this.nplayer2.setText(this.player2 + " : " + this.model.getPlayers().get(1).getNumberDices());
+        this.nplayer3.setText(this.player3 + " : " + this.model.getPlayers().get(2).getNumberDices());
+        this.nplayer4.setText(this.player4 + " : " + this.model.getPlayers().get(3).getNumberDices());
     }
 
 }

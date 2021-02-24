@@ -19,6 +19,7 @@
                <children>
                   <VBox id="upperFirstBox" prefHeight="360.0" prefWidth="320.0">
                      <children>
+                        <Label id="lastBet" alignment="CENTER" contentDisplay="CENTER" text="Dés restants" />
                         <Label id="playerName" fx:id="nplayer1" text="Label" />
                         <Label id="playerName" fx:id="nplayer2" text="Label" />
                         <Label id="playerName" fx:id="nplayer3" text="Label" />
