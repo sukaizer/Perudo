@@ -48,7 +48,10 @@
                   <VBox id="upperBoxInfo" alignment="CENTER" layoutX="20.0" prefHeight="232.0" prefWidth="960.0">
                      <children>
                         <Label id="numberRoundLabel" fx:id="playerTurnLabel" text="Label" />
-                        <HBox prefHeight="105.0" prefWidth="951.0" />
+                        <HBox alignment="CENTER" prefHeight="105.0" prefWidth="951.0">
+                           <children>
+                              <Label id="numberRoundLabel" fx:id="actualDice" text="Label" />
+                           </children></HBox>
                      </children>
                   </VBox>
                </children>

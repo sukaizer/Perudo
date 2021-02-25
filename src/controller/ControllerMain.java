@@ -11,8 +11,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import model.Dice;
 import model.Model;
+import model.Player;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class ControllerMain implements Initializable {
@@ -28,11 +31,15 @@ public class ControllerMain implements Initializable {
     @FXML public Label labelChoice;
     @FXML public Label betIsValidLabel;
     @FXML public Label playerTurnLabel;
+    @FXML public Label actualDice;
+
     @FXML public Button lierButton;
     @FXML public Button betButton;
     @FXML public Button validateBetButton;
+
     @FXML public VBox vboxLierBet;
     @FXML public VBox vboxValidateBet;
+
     @FXML public Spinner<Integer> spinnerQuantity;
     @FXML public ChoiceBox<Dice> choiceBoxValue;
 
@@ -50,6 +57,7 @@ public class ControllerMain implements Initializable {
         setPlayerLabel();
         this.lastBet.setVisible(false);
         this.playerTurnLabel.setText( "Round du Joueur : " + playerTurnName());
+        this.actualDice.setText(playerDices(this.model.getActualPlayer()));
     }
 
 
@@ -78,8 +86,8 @@ public class ControllerMain implements Initializable {
             this.model.getPreviousPlayer().loseDice();
             this.model.getPreviousPlayer().setJustLostADice(true);
         }
-
         this.model.newRound();
+
         setPlayerLabel();
         this.lierButton.setDisable(true);
         this.playerLastBet.setVisible(false);
@@ -87,6 +95,8 @@ public class ControllerMain implements Initializable {
         this.choiceBoxValue.getItems().remove(Dice.Paco);
         this.choiceBoxValue.setValue(null);
         this.spinnerQuantity.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,model.totalNumberDices()));
+        this.playerTurnLabel.setText( "Round du Joueur : " + playerTurnName());
+        this.actualDice.setText(playerDices(this.model.getActualPlayer()));
     }
 
     @FXML public void bet(ActionEvent actionEvent) {
@@ -113,11 +123,11 @@ public class ControllerMain implements Initializable {
             this.playerLastBet.setVisible(true);
             disablePanel(this.vboxLierBet,false);
             disablePanel(this.vboxValidateBet,true);
-            this.playerTurnLabel.setText( "Round du Joueur : " + playerTurnName());
         } else {
             this.betIsValidLabel.setVisible(true);
         }
-
+        this.playerTurnLabel.setText( "Round du Joueur : " + playerTurnName());
+        this.actualDice.setText(playerDices(this.model.getActualPlayer()));
     }
 
     @FXML public void choiceBoxOnAction(MouseEvent mouseEvent) {
@@ -157,6 +167,18 @@ public class ControllerMain implements Initializable {
         this.nplayer2.setText(this.player2 + " : " + this.model.getPlayers().get(1).getNumberDices());
         this.nplayer3.setText(this.player3 + " : " + this.model.getPlayers().get(2).getNumberDices());
         this.nplayer4.setText(this.player4 + " : " + this.model.getPlayers().get(3).getNumberDices());
+    }
+
+    public String playerDices(Player player){
+        ArrayList<Dice> dices = player.getDices();
+        int paco = Collections.frequency(dices, Dice.Paco);
+        int deux = Collections.frequency(dices, Dice.Deux);
+        int trois = Collections.frequency(dices, Dice.Trois);
+        int quatre = Collections.frequency(dices, Dice.Quatre);
+        int cinq = Collections.frequency(dices, Dice.Cinq);
+        int six = Collections.frequency(dices, Dice.Six);
+
+        return paco + " paco " + deux + " deux " + trois + " trois " + quatre + " quatre " + cinq + " cinq " + six + " six ";
     }
 
 }
