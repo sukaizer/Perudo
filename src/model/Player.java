@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Player {
+    private String name;
     private ArrayList<Dice> dices;
     private final static int MAXNUMBERDICES = 5; //maximum number of dices
     private int numberDices; //actual number of dices
@@ -12,6 +13,7 @@ public class Player {
     private final int nbPlayer; // player's id
 
     public Player(int nbPlayer) {
+        this.name = "";
         this.numberDices = MAXNUMBERDICES;
         this.dices = new ArrayList<>();
         for (int i = 0; i < MAXNUMBERDICES; i++) {
@@ -21,6 +23,14 @@ public class Player {
         this.nbPlayer = nbPlayer;
         this.isAlive = true;
         this.justLostADice = false;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public ArrayList<Dice> getDices() {

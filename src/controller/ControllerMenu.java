@@ -37,7 +37,7 @@ public class ControllerMenu implements Initializable {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.getScene().setRoot(parent);
         ControllerMain controllerMain = loader.getController();
-        controllerMain.initData(textField1.getText(),textField2.getText(),textField3.getText(),textField4.getText());
+        controllerMain.initData(textField1.getText(),textField2.getText(),textField3.getText(),textField4.getText(), stage);
     }
 
     public void testButtonDisable(KeyEvent actionEvent) {

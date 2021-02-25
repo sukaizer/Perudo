@@ -2,17 +2,22 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.Dice;
 import model.Model;
 import model.Player;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,16 +70,22 @@ public class ControllerMain implements Initializable {
     private String player3;
     private String player4;
     private Model model;
+    private Stage stage;
 
-    public void initData(String player1Name, String player2Name, String player3Name, String player4Name) {
+    public void initData(String player1Name, String player2Name, String player3Name, String player4Name, Stage stage) {
         this.player1 = player1Name;
         this.player2 = player2Name;
         this.player3 = player3Name;
         this.player4 = player4Name;
+        this.model.getPlayers().get(0).setName(player1Name);
+        this.model.getPlayers().get(1).setName(player2Name);
+        this.model.getPlayers().get(2).setName(player3Name);
+        this.model.getPlayers().get(3).setName(player4Name);
         setPlayerLabel();
         this.lastBet.setVisible(false);
         this.playerTurnLabel.setText("Round du Joueur : " + playerTurnName());
         this.actualDice.setText(playerDices(this.model.getActualPlayer()));
+        this.stage = stage;
     }
 
 
@@ -96,7 +107,7 @@ public class ControllerMain implements Initializable {
     }
 
     @FXML
-    public void lierButtonAction(ActionEvent actionEvent) {
+    public void lierButtonAction(ActionEvent actionEvent) throws IOException {
         if (this.model.lierValue()) {
             this.model.getActualPlayer().loseDice();
             this.model.getActualPlayer().setJustLostADice(true);
@@ -105,6 +116,8 @@ public class ControllerMain implements Initializable {
             this.model.getPreviousPlayer().setJustLostADice(true);
         }
         this.model.newRound();
+
+        if(this.model.isWon()) goToWon();
 
         setPlayerLabel();
         this.lierButton.setDisable(true);
@@ -120,6 +133,7 @@ public class ControllerMain implements Initializable {
 
         this.playerTurnLabel.setText("Round du Joueur : " + playerTurnName());
         this.actualDice.setText(playerDices(this.model.getActualPlayer()));
+        this.validateBetButton.setDisable(true);
     }
 
     @FXML
@@ -206,6 +220,17 @@ public class ControllerMain implements Initializable {
         int six = Collections.frequency(dices, Dice.Six);
 
         return paco + " paco " + deux + " deux " + trois + " trois " + quatre + " quatre " + cinq + " cinq " + six + " six ";
+    }
+
+    public void goToWon() throws IOException {
+        //this.model.getPlayers().removeIf(p -> (!p.getIsAlive()));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../ressources/fxmlFiles/Won.fxml"));
+        Parent parent = loader.load();
+        this.stage.getScene().setRoot(parent);
+        ControllerWon controllerWon = loader.getController();
+        //controllerWon.initData(this.model.getPlayers().get(0));
+        controllerWon.initData(this.model.getActualPlayer());
     }
 
 }

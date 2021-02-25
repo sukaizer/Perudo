@@ -10,9 +10,11 @@ public class Model {
     private int betQuantity; //The number of betValue faces
     private boolean palifico; //If true then palifico round
     private boolean start; //If true then start of the round
+    private boolean isWon;
 
     public Model() {
         this.turn = 0;
+        this.isWon = false;
         this.start = true;
         this.palifico = false;
         this.players = new ArrayList<>(4);
@@ -39,7 +41,7 @@ public class Model {
      */
     public void nextTurn() {
         if (this.turn == 3) {
-            this.turn = 1;
+            this.turn = 0;
         } else {
             if (this.start && this.turn == firstTurn()) this.start = false;
             this.turn++;
@@ -87,10 +89,12 @@ public class Model {
      */
     public void newRound() {
         boolean a = false;
+        int n = 0;
 
         for (Player p : this.players) {
             if (p.getIsAlive()) {
                 p.setNewDices();
+                n++;
             }
             if (p.getJustLostADice()) {
                 this.turn = p.getNbPlayer();
@@ -103,8 +107,12 @@ public class Model {
         }
         this.start = true;
         this.palifico = a;
+        this.isWon = n == 1;
     }
 
+    public boolean isWon() {
+        return isWon;
+    }
 
     public Dice getBetValue() {
         return betValue;

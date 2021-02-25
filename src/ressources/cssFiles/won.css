@@ -1,0 +1,7 @@
+.root {
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 50;
+    -fx-background-color: #28b8ca;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
