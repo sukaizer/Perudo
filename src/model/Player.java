@@ -9,12 +9,10 @@ public class Player {
     private int numberDices; //actual number of dices
     private boolean isAlive;
     private boolean justLostADice;
-    private Model model;
     private final int nbPlayer; // player's id
 
-    public Player(Model model, int nbPlayer){
+    public Player(int nbPlayer) {
         this.numberDices = MAXNUMBERDICES;
-        this.model = model;
         this.dices = new ArrayList<>();
         for (int i = 0; i < MAXNUMBERDICES; i++) {
             int pick = new Random().nextInt(Dice.values().length);
@@ -56,11 +54,11 @@ public class Player {
     /**
      * Remove a dice from the player
      */
-    public void loseDice(){
-        System.out.println("joueur " + this.nbPlayer + " a " +this.dices.size());
+    public void loseDice() {
+        System.out.println("joueur " + this.nbPlayer + " a " + this.dices.size());
         this.dices.remove(0);
         this.numberDices--;
-        if(this.dices.size() == 0){
+        if (this.dices.size() == 0) {
             setIsAlive(false);
         }
     }
@@ -68,8 +66,8 @@ public class Player {
     /**
      * Add a dice
      */
-    public void gainDice(){
-        if(this.dices.size() < MAXNUMBERDICES - 1){
+    public void gainDice() {
+        if (this.dices.size() < MAXNUMBERDICES - 1) {
             this.dices.add(Dice.values()[new Random().nextInt(Dice.values().length)]);
             this.numberDices++;
         }
@@ -78,7 +76,7 @@ public class Player {
     /**
      * Set new dices
      */
-    public void setNewDices(){
+    public void setNewDices() {
         this.dices = new ArrayList<>();
         for (int i = 0; i < this.numberDices; i++) {
             int pick = new Random().nextInt(Dice.values().length);
