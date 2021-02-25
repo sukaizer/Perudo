@@ -21,8 +21,8 @@ public class Model {
         }
     }
 
-    public boolean isPalifico() {
-        return palifico;
+    public boolean isNotPalifico() {
+        return !palifico;
     }
 
     public boolean isStart() {
@@ -56,10 +56,12 @@ public class Model {
         return 3;
     }
 
-    public int previousTurn() {
+    public int previousTurn(boolean change) {
         if (this.turn == 0) {
+            if (change) this.turn = 3;
             return 3;
         } else {
+            if (change) this.turn--;
             return this.turn - 1;
         }
     }
@@ -73,22 +75,34 @@ public class Model {
     }
 
     public Player getPreviousPlayer() {
-        return players.get(previousTurn());
+        if (!players.get(previousTurn(false)).getIsAlive()){
+            previousTurn(true);
+            getPreviousPlayer();
+        }
+        return players.get(previousTurn(false));
     }
 
     /**
      * reset the parameters for the next round
      */
     public void newRound() {
-        int a = 0;
+        boolean a = false;
+
         for (Player p : this.players) {
-            if (p.getIsAlive()) p.setNewDices();
-            if (p.getJustLostADice()) this.turn = p.getNbPlayer();
-            if (p.getJustLostADice() && p.getNumberDices() == 1) a++;
+            if (p.getIsAlive()) {
+                p.setNewDices();
+            }
+            if (p.getJustLostADice()) {
+                this.turn = p.getNbPlayer();
+            }
+            if (p.getJustLostADice() && p.getNumberDices() == 1 && p.getIsAlive()) a = true;
             p.setJustLostADice(false);
         }
+        while(!this.players.get(this.turn).getIsAlive()){
+            this.turn++;
+        }
         this.start = true;
-        this.palifico = a == 1;
+        this.palifico = a;
     }
 
 
@@ -159,7 +173,6 @@ public class Model {
     }
 
     public boolean pacoSwitchConditionReverse(Dice value, int quantity) {
-        System.out.println("test2");
         return (quantity >= (2 * this.betQuantity) + 1 && !value.equals(Dice.Paco));
     }
 
@@ -169,11 +182,10 @@ public class Model {
      * @return true if the bet is a lie
      */
     public boolean lierValue() {
-        //TODO
         int n = 0;
         for (Player p : this.players) {
             for (Dice d : p.getDices()) {
-                if (d.equals(this.betValue)) n++;
+                if (d.equals(this.betValue) || d.equals(Dice.Paco)) n++;
             }
         }
         return n > this.betQuantity;

@@ -111,7 +111,10 @@ public class ControllerMain implements Initializable {
         this.playerLastBet.setVisible(false);
         this.lastBet.setVisible(false);
 
-        this.choiceBoxValue.getItems().remove(Dice.Paco);
+        if (this.model.isNotPalifico()){
+            this.choiceBoxValue.getItems().remove(Dice.Paco);
+        }
+
         this.choiceBoxValue.setValue(null);
         this.spinnerQuantity.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, model.totalNumberDices()));
 
@@ -137,7 +140,7 @@ public class ControllerMain implements Initializable {
             this.lastBet.setText(quantity + " " + value.toString());
             this.playerLastBet.setText(playerTurnName());
             if (this.model.isStart()) {
-                this.choiceBoxValue.getItems().add(Dice.Paco);
+                if (this.model.isNotPalifico() && !this.choiceBoxValue.getItems().contains(Dice.Paco)) this.choiceBoxValue.getItems().add(Dice.Paco);
                 this.lierButton.setDisable(false);
             }
             this.model.nextTurn();
