@@ -57,6 +57,16 @@
     -fx-font-size: 25;
 }
 
+#sureLabel {
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 25;
+}
+
+#betValueLabel {
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 20;
+}
+
 .button {
     -fx-font-family: Avenir;
     -fx-font-size: 20;

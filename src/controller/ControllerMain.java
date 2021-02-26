@@ -47,6 +47,8 @@ public class ControllerMain implements Initializable {
     public Label playerTurnLabel;
     @FXML
     public Label actualDice;
+    @FXML
+    public Label betConfirmLabel;
 
     @FXML
     public Button lierButton;
@@ -54,16 +56,23 @@ public class ControllerMain implements Initializable {
     public Button betButton;
     @FXML
     public Button validateBetButton;
+    @FXML
+    public Button gobackButton;
 
     @FXML
     public VBox vboxLierBet;
     @FXML
     public VBox vboxValidateBet;
+    @FXML
+    public VBox vboxConfirmationBet;
+    @FXML
+    public VBox vboxConfirmationLier;
 
     @FXML
     public Spinner<Integer> spinnerQuantity;
     @FXML
     public ChoiceBox<Dice> choiceBoxValue;
+
 
     private String player1; //the players names, won't change
     private String player2;
@@ -104,10 +113,94 @@ public class ControllerMain implements Initializable {
         this.spinnerQuantity.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, model.totalNumberDices()));
         this.validateBetButton.setDisable(true);
         this.betIsValidLabel.setVisible(false);
+        disablePanel(this.vboxConfirmationLier,true);
+        disablePanel(this.vboxConfirmationBet,true);
     }
 
     @FXML
     public void lierButtonAction(ActionEvent actionEvent) throws IOException {
+        disablePanel(this.vboxConfirmationLier,false);
+        disablePanel(this.vboxLierBet,true);
+    }
+
+    @FXML
+    public void bet(ActionEvent actionEvent) {
+        disablePanel(this.vboxLierBet, true);
+        disablePanel(this.vboxValidateBet, false);
+        this.labelChoice.setText("Quelle mise ?");
+    }
+
+    @FXML
+    public void validateBet(ActionEvent actionEvent) {
+        disablePanel(this.vboxConfirmationBet,false);
+        disablePanel(this.vboxValidateBet,true);
+        this.betConfirmLabel.setText("Votre mise est : " + this.spinnerQuantity.getValue() + "  " + this.choiceBoxValue.getValue() );
+    }
+
+    @FXML
+    public void choiceBoxOnAction(MouseEvent mouseEvent) {
+        try {
+            this.validateBetButton.setDisable(this.choiceBoxValue.getValue() == null);
+        } catch (NullPointerException e) {
+            this.validateBetButton.setDisable(true);
+        }
+    }
+
+    @FXML
+    public void spinnerOnAction(MouseEvent mouseEvent) {
+        try {
+            this.validateBetButton.setDisable(this.choiceBoxValue.getValue() == null);
+        } catch (NullPointerException e) {
+            this.validateBetButton.setDisable(true);
+        }
+    }
+
+    @FXML
+    public void backAction(ActionEvent actionEvent) {
+        disablePanel(this.vboxLierBet,false);
+        disablePanel(this.vboxValidateBet,true);
+        this.choiceBoxValue.setValue(null);
+        this.validateBetButton.setDisable(true);
+        this.labelChoice.setText("Que faites-vous ?");
+    }
+
+    @FXML
+    public void confirmActionBet(ActionEvent actionEvent) {
+        Dice value = this.choiceBoxValue.getValue();
+        int quantity = this.spinnerQuantity.getValue();
+
+        if (this.model.betIsValid(value, quantity, 0)) {
+            this.betIsValidLabel.setVisible(false);
+            this.model.setBet(value, quantity);
+            this.lastBet.setText(quantity + " " + value.toString());
+            this.playerLastBet.setText(playerTurnName());
+            if (this.model.isStart()) {
+                if (this.model.isNotPalifico() && !this.choiceBoxValue.getItems().contains(Dice.Paco)) this.choiceBoxValue.getItems().add(Dice.Paco);
+                this.lierButton.setDisable(false);
+            }
+            this.model.nextTurn();
+            this.lastBet.setVisible(true);
+            this.playerLastBet.setVisible(true);
+            disablePanel(this.vboxLierBet, false);
+            disablePanel(this.vboxValidateBet, true);
+        } else {
+            disablePanel(this.vboxValidateBet, false);
+            this.betIsValidLabel.setVisible(true);
+        }
+        this.playerTurnLabel.setText("Round du Joueur : " + playerTurnName());
+        this.actualDice.setText(playerDices(this.model.getActualPlayer()));
+        disablePanel(this.vboxConfirmationBet,true);
+        this.labelChoice.setText("Que faites-vous ?");
+    }
+
+    @FXML
+    public void returnActionBet(ActionEvent actionEvent) {
+        disablePanel(this.vboxConfirmationBet,true);
+        disablePanel(this.vboxValidateBet,false);
+    }
+
+    @FXML
+    public void confirmActionLier(ActionEvent actionEvent) throws IOException {
         if (this.model.lierValue()) {
             this.model.getActualPlayer().loseDice();
             this.model.getActualPlayer().setJustLostADice(true);
@@ -134,57 +227,14 @@ public class ControllerMain implements Initializable {
         this.playerTurnLabel.setText("Round du Joueur : " + playerTurnName());
         this.actualDice.setText(playerDices(this.model.getActualPlayer()));
         this.validateBetButton.setDisable(true);
+        disablePanel(this.vboxConfirmationLier,true);
+        disablePanel(this.vboxLierBet,false);
     }
 
     @FXML
-    public void bet(ActionEvent actionEvent) {
-        disablePanel(this.vboxLierBet, true);
-        disablePanel(this.vboxValidateBet, false);
-        this.labelChoice.setText("Quelle mise ?");
-    }
-
-    @FXML
-    public void validateBet(ActionEvent actionEvent) {
-        Dice value = this.choiceBoxValue.getValue();
-        int quantity = this.spinnerQuantity.getValue();
-
-        if (this.model.betIsValid(value, quantity, 0)) {
-            this.betIsValidLabel.setVisible(false);
-            this.model.setBet(value, quantity);
-            this.lastBet.setText(quantity + " " + value.toString());
-            this.playerLastBet.setText(playerTurnName());
-            if (this.model.isStart()) {
-                if (this.model.isNotPalifico() && !this.choiceBoxValue.getItems().contains(Dice.Paco)) this.choiceBoxValue.getItems().add(Dice.Paco);
-                this.lierButton.setDisable(false);
-            }
-            this.model.nextTurn();
-            this.lastBet.setVisible(true);
-            this.playerLastBet.setVisible(true);
-            disablePanel(this.vboxLierBet, false);
-            disablePanel(this.vboxValidateBet, true);
-        } else {
-            this.betIsValidLabel.setVisible(true);
-        }
-        this.playerTurnLabel.setText("Round du Joueur : " + playerTurnName());
-        this.actualDice.setText(playerDices(this.model.getActualPlayer()));
-    }
-
-    @FXML
-    public void choiceBoxOnAction(MouseEvent mouseEvent) {
-        try {
-            this.validateBetButton.setDisable(this.choiceBoxValue.getValue() == null);
-        } catch (NullPointerException e) {
-            this.validateBetButton.setDisable(true);
-        }
-    }
-
-    @FXML
-    public void spinnerOnAction(MouseEvent mouseEvent) {
-        try {
-            this.validateBetButton.setDisable(this.choiceBoxValue.getValue() == null);
-        } catch (NullPointerException e) {
-            this.validateBetButton.setDisable(true);
-        }
+    public void returnActionLier(ActionEvent actionEvent) {
+        disablePanel(this.vboxConfirmationLier,true);
+        disablePanel(this.vboxLierBet,false);
     }
 
     public void disablePanel(Pane p, boolean disable) {
@@ -232,5 +282,6 @@ public class ControllerMain implements Initializable {
         //controllerWon.initData(this.model.getPlayers().get(0));
         controllerWon.initData(this.model.getActualPlayer());
     }
+
 
 }
