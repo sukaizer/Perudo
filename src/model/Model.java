@@ -77,7 +77,7 @@ public class Model {
     }
 
     public Player getPreviousPlayer() {
-        if (!players.get(previousTurn(false)).getIsAlive()){
+        if (!players.get(previousTurn(false)).getIsAlive()) {
             previousTurn(true);
             getPreviousPlayer();
         }
@@ -102,7 +102,7 @@ public class Model {
             if (p.getJustLostADice() && p.getNumberDices() == 1 && p.getIsAlive()) a = true;
             p.setJustLostADice(false);
         }
-        while(!this.players.get(this.turn).getIsAlive()){
+        while (!this.players.get(this.turn).getIsAlive()) {
             this.turn++;
         }
         this.start = true;

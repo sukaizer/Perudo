@@ -113,14 +113,14 @@ public class ControllerMain implements Initializable {
         this.spinnerQuantity.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, model.totalNumberDices()));
         this.validateBetButton.setDisable(true);
         this.betIsValidLabel.setVisible(false);
-        disablePanel(this.vboxConfirmationLier,true);
-        disablePanel(this.vboxConfirmationBet,true);
+        disablePanel(this.vboxConfirmationLier, true);
+        disablePanel(this.vboxConfirmationBet, true);
     }
 
     @FXML
     public void lierButtonAction(ActionEvent actionEvent) throws IOException {
-        disablePanel(this.vboxConfirmationLier,false);
-        disablePanel(this.vboxLierBet,true);
+        disablePanel(this.vboxConfirmationLier, false);
+        disablePanel(this.vboxLierBet, true);
     }
 
     @FXML
@@ -132,9 +132,9 @@ public class ControllerMain implements Initializable {
 
     @FXML
     public void validateBet(ActionEvent actionEvent) {
-        disablePanel(this.vboxConfirmationBet,false);
-        disablePanel(this.vboxValidateBet,true);
-        this.betConfirmLabel.setText("Votre mise est : " + this.spinnerQuantity.getValue() + "  " + this.choiceBoxValue.getValue() );
+        disablePanel(this.vboxConfirmationBet, false);
+        disablePanel(this.vboxValidateBet, true);
+        this.betConfirmLabel.setText("Votre mise est : " + this.spinnerQuantity.getValue() + "  " + this.choiceBoxValue.getValue());
     }
 
     @FXML
@@ -157,8 +157,8 @@ public class ControllerMain implements Initializable {
 
     @FXML
     public void backAction(ActionEvent actionEvent) {
-        disablePanel(this.vboxLierBet,false);
-        disablePanel(this.vboxValidateBet,true);
+        disablePanel(this.vboxLierBet, false);
+        disablePanel(this.vboxValidateBet, true);
         this.choiceBoxValue.setValue(null);
         this.validateBetButton.setDisable(true);
         this.labelChoice.setText("Que faites-vous ?");
@@ -175,7 +175,8 @@ public class ControllerMain implements Initializable {
             this.lastBet.setText(quantity + " " + value.toString());
             this.playerLastBet.setText(playerTurnName());
             if (this.model.isStart()) {
-                if (this.model.isNotPalifico() && !this.choiceBoxValue.getItems().contains(Dice.Paco)) this.choiceBoxValue.getItems().add(Dice.Paco);
+                if (this.model.isNotPalifico() && !this.choiceBoxValue.getItems().contains(Dice.Paco))
+                    this.choiceBoxValue.getItems().add(Dice.Paco);
                 this.lierButton.setDisable(false);
             }
             this.model.nextTurn();
@@ -189,14 +190,14 @@ public class ControllerMain implements Initializable {
         }
         this.playerTurnLabel.setText("Round du Joueur : " + playerTurnName());
         this.actualDice.setText(playerDices(this.model.getActualPlayer()));
-        disablePanel(this.vboxConfirmationBet,true);
+        disablePanel(this.vboxConfirmationBet, true);
         this.labelChoice.setText("Que faites-vous ?");
     }
 
     @FXML
     public void returnActionBet(ActionEvent actionEvent) {
-        disablePanel(this.vboxConfirmationBet,true);
-        disablePanel(this.vboxValidateBet,false);
+        disablePanel(this.vboxConfirmationBet, true);
+        disablePanel(this.vboxValidateBet, false);
     }
 
     @FXML
@@ -210,14 +211,14 @@ public class ControllerMain implements Initializable {
         }
         this.model.newRound();
 
-        if(this.model.isWon()) goToWon();
+        if (this.model.isWon()) goToWon();
 
         setPlayerLabel();
         this.lierButton.setDisable(true);
         this.playerLastBet.setVisible(false);
         this.lastBet.setVisible(false);
 
-        if (this.model.isNotPalifico()){
+        if (this.model.isNotPalifico()) {
             this.choiceBoxValue.getItems().remove(Dice.Paco);
         }
 
@@ -227,14 +228,14 @@ public class ControllerMain implements Initializable {
         this.playerTurnLabel.setText("Round du Joueur : " + playerTurnName());
         this.actualDice.setText(playerDices(this.model.getActualPlayer()));
         this.validateBetButton.setDisable(true);
-        disablePanel(this.vboxConfirmationLier,true);
-        disablePanel(this.vboxLierBet,false);
+        disablePanel(this.vboxConfirmationLier, true);
+        disablePanel(this.vboxLierBet, false);
     }
 
     @FXML
     public void returnActionLier(ActionEvent actionEvent) {
-        disablePanel(this.vboxConfirmationLier,true);
-        disablePanel(this.vboxLierBet,false);
+        disablePanel(this.vboxConfirmationLier, true);
+        disablePanel(this.vboxLierBet, false);
     }
 
     public void disablePanel(Pane p, boolean disable) {
