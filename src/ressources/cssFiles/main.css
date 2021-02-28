@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 .root {
     -fx-background-color: #28b8ca;
-
+    -fx-background-image: url("../files/Background.jpeg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1280 720;
+    -fx-background-position: center center;
 }
 
 #playerName {
@@ -26,29 +30,30 @@
 }
 
 #upperFirstBox {
-    -fx-border-color: #5b21c3;
+    -fx-border-color: #f58634;
     -fx-border-width: 6 3 3 6;
 }
 
 #lowerFirstBox {
-    -fx-border-color: #5b21c3;
+    -fx-border-color: #f58634;
     -fx-border-width: 3 3 6 6;
 }
 
 #upperBoxInfo {
-    -fx-border-color: #5b21c3;
+    -fx-border-color: #f58634;
     -fx-border-width: 6 6 3 3;
 }
 
 
 #mainInfo{
     -fx-alignment: center;
-    -fx-border-color: #5b21c3;
-    -fx-border-width: 3 6 6 3;
+    -fx-border-color: #f58634;
+    -fx-border-width: 3 6 9 3;
 }
 
 #optionsLabel {
     -fx-font-size: 30;
+    /*-fx-font-family: 'Gochi Hand', cursive;*/
     -fx-font-family: "Avenir Next";
 }
 

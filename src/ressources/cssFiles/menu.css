@@ -1,6 +1,10 @@
 .root {
     -fx-alignment: CENTER;
     -fx-background-color: #28b8ca;
+    -fx-background-image: url("../files/Background.jpeg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1280 720;
+    -fx-background-position: center center;
 }
 
 .label {

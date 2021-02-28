@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
 .root {
-    -fx-font-family: "Avenir Next";
+    -fx-font-family: 'Gochi Hand';
     -fx-background-color: #28b8ca;
     -fx-alignment: center;
     -fx-spacing: 10;
+    -fx-background-image: url("../files/Background.jpeg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1280 720;
+    -fx-background-position: center center;
 }
 
 .label {
