@@ -43,12 +43,12 @@ public class Model {
         if (this.turn == 3) {
             this.turn = 0;
         } else {
-            if (this.start && this.turn == firstTurn()) this.start = false;
             this.turn++;
         }
         if (!this.players.get(this.turn).getIsAlive()) {
             nextTurn();
         }
+        this.start = false;
     }
 
     public int firstTurn() {

@@ -162,6 +162,7 @@ public class ControllerMain implements Initializable {
         this.choiceBoxValue.setValue(null);
         this.validateBetButton.setDisable(true);
         this.labelChoice.setText("Que faites-vous ?");
+        this.betIsValidLabel.setVisible(false);
     }
 
     @FXML
